@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Muzei Instagram Wallpaper Plug-In</string>
+  <string name="source_name">Instagram</string>
+  <string name="source_description">Your Instagram photos.</string>
+  <string name="authorize_account">Authorize Account</string>
+  <string name="unable_to_authorize_account">Unable to authorize account.</string>
+  <string name="remove_account">Remove Account</string>
+</resources>
