@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tonycosentini.muzei.instagramsource">
+    package="com.tonycosentini.muzei.instagramsource"
+    android:versionCode="1"
+    android:versionName="1.0">
 
   <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -10,7 +12,8 @@
 
   <application android:allowBackup="true"
       android:label="@string/app_name"
-      android:name=".InstagramArtSourceApplication">
+      android:name=".InstagramArtSourceApplication"
+      android:icon="@drawable/ic_launcher">
 
     <service android:name=".InstagramArtSource"
         android:label="@string/source_name"
