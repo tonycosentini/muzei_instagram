@@ -1,0 +1,8 @@
+<resources>
+  <color name="gallery_settings_empty_state_dark">#394a43</color>
+  <color name="gallery_settings_empty_state_light">#639680</color>
+
+  <color name="gallery_settings_window_background">#111</color>
+  <color name="gallery_settings_inset_shade">#a111</color>
+  <color name="gallery_settings_chosen_photo_placeholder">#5666</color>
+</resources>
