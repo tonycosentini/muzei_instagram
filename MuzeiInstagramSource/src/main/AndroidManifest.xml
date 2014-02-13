@@ -13,30 +13,30 @@
       android:name=".InstagramArtSourceApplication">
 
     <service android:name=".InstagramArtSource"
-      android:label="@string/source_name"
-      android:description="@string/source_description"
-      android:icon="@drawable/ic_launcher">
+        android:label="@string/source_name"
+        android:description="@string/source_description"
+        android:icon="@drawable/ic_launcher">
 
       <intent-filter>
         <action android:name="com.google.android.apps.muzei.api.MuzeiArtSource"/>
       </intent-filter>
 
-      <meta-data android:name="color" android:value="#427096" />
+      <meta-data android:name="color" android:value="#427096"/>
 
       <meta-data android:name="settingsActivity"
-        android:value="com.tonycosentini.muzei.instagramsource.SettingsActivity"/>
+          android:value="com.tonycosentini.muzei.instagramsource.SettingsActivity"/>
     </service>
 
     <activity android:name="com.tonycosentini.muzei.instagramsource.SettingsActivity"
-      android:label="@string/source_name"
-      android:theme="@style/Theme.Muzei.Settings"
-      android:exported="true">
+        android:label="@string/source_name"
+        android:theme="@style/Theme.Muzei.Settings"
+        android:exported="true">
 
       <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="muzeiinstagram" android:host="received_credentials" />
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="muzeiinstagram" android:host="received_credentials"/>
       </intent-filter>
 
     </activity>

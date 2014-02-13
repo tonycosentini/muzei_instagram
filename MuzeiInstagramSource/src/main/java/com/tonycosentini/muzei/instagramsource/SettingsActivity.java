@@ -1,10 +1,14 @@
 package com.tonycosentini.muzei.instagramsource;
 
 import android.app.Activity;
+import android.app.TaskStackBuilder;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -52,8 +56,25 @@ public class SettingsActivity extends Activity {
     }
   }
 
+  // TODO: See if there is a way to use parentActivity
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        Intent upIntent = new Intent();
+        upIntent.setComponent(new ComponentName("net.nurik.roman.muzei", "com.google.android.apps.muzei.settings.SettingsActivity"));
+        NavUtils.navigateUpTo(this, upIntent);
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
   @OnClick(R.id.authorize_account_button) public void authorizeAccountButtonTapped() {
-    String uriString = String.format("https://instagram.com/oauth/authorize/?client_id=%s&redirect_uri=%s&response_type=token", CLIENT_ID, "muzeiinstagram%3A%2F%2Freceived_credentials%2F");
+    String uriString = String.format(
+        "https://instagram.com/oauth/authorize/?client_id=%s&redirect_uri=%s&response_type=token",
+        CLIENT_ID, "muzeiinstagram%3A%2F%2Freceived_credentials%2F");
     Intent i = new Intent(Intent.ACTION_VIEW);
     i.setData(Uri.parse(uriString));
     startActivity(i);
@@ -70,12 +91,13 @@ public class SettingsActivity extends Activity {
 
     if (dataUri != null && dataUri.getScheme().equals(CALLBACK_SCHEME)) {
       if (dataUri.getEncodedFragment() != null) {
-        String accessToken = getIntent().getData().getEncodedFragment().replaceFirst("\\Aaccess_token=", "");
+        String accessToken =
+            getIntent().getData().getEncodedFragment().replaceFirst("\\Aaccess_token=", "");
         credentialsHolder.setAccountTokenKey(accessToken);
       } else if (dataUri.getQueryParameter("error_reason") != null) {
-        Toast.makeText(this, getString(R.string.unable_to_authorize_account), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.unable_to_authorize_account), Toast.LENGTH_SHORT)
+            .show();
       }
     }
-
   }
 }
