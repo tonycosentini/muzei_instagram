@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.SparseIntArray;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,21 @@ public class SettingsActivity extends Activity {
   @InjectView(R.id.remove_account_button) Button removeAccountButton;
   @InjectView(R.id.settings_layout) ViewGroup settingsLayout;
   @InjectView(R.id.photos_to_display_radio_group) RadioGroup photosToDisplayRadioGroup;
+
+  private static SparseIntArray sRotateMenuIdsByMin = new SparseIntArray();
+  private static SparseIntArray sRotateMinsByMenuId = new SparseIntArray();
+
+  static {
+    sRotateMenuIdsByMin.put(0, R.id.action_rotate_interval_none);
+    sRotateMenuIdsByMin.put(60, R.id.action_rotate_interval_1h);
+    sRotateMenuIdsByMin.put(60 * 3, R.id.action_rotate_interval_3h);
+    sRotateMenuIdsByMin.put(60 * 6, R.id.action_rotate_interval_6h);
+    sRotateMenuIdsByMin.put(60 * 24, R.id.action_rotate_interval_24h);
+    sRotateMenuIdsByMin.put(60 * 72, R.id.action_rotate_interval_72h);
+    for (int i = 0; i < sRotateMenuIdsByMin.size(); i++) {
+      sRotateMinsByMenuId.put(sRotateMenuIdsByMin.valueAt(i), sRotateMenuIdsByMin.keyAt(i));
+    }
+  }
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -80,9 +97,39 @@ public class SettingsActivity extends Activity {
     }
   }
 
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    int rotateIntervalMin = preferencesHolder.getRotationSetting();
+    int menuId = sRotateMenuIdsByMin.get(rotateIntervalMin);
+    if (menuId != 0) {
+      MenuItem item = menu.findItem(menuId);
+      if (item != null) {
+        item.setChecked(true);
+      }
+    }
+
+    return super.onPrepareOptionsMenu(menu);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    super.onCreateOptionsMenu(menu);
+    getMenuInflater().inflate(R.menu.instagram_settings, menu);
+    return true;
+  }
+
+
   // TODO: See if there is a way to use parentActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
+    int itemId = item.getItemId();
+    int rotateMin = sRotateMinsByMenuId.get(itemId, -1);
+    if (rotateMin != -1) {
+      preferencesHolder.setRotationSetting(rotateMin);
+      invalidateOptionsMenu();
+      return true;
+    }
+
     switch (item.getItemId()) {
       case android.R.id.home:
         Intent upIntent = new Intent();

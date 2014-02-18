@@ -8,4 +8,5 @@
   <string name="my_photos">My Photos</string>
   <string name="my_feed">My Feed</string>
   <string name="photos_to_use">Photos to display</string>
+  <string name="action_rotate_interval">Change interval</string>
 </resources>
