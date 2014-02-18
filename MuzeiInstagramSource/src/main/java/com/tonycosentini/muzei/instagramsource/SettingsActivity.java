@@ -17,6 +17,8 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import com.google.android.apps.muzei.api.MuzeiArtSource;
+import com.google.android.apps.muzei.api.internal.ProtocolConstants;
 import com.tonycosentini.muzei.instagramsource.data.PreferencesHolder;
 import com.tonycosentini.muzei.instagramsource.data.InstagramService;
 import javax.inject.Inject;
@@ -77,7 +79,10 @@ public class SettingsActivity extends Activity {
             preferencesHolder.setPhotosToDisplaySetting(PreferencesHolder.PHOTOS_TO_DISPLAY_MY_FEED);
           }
 
-          // TODO: Reset photo.
+          Intent updateIntent = new Intent(SettingsActivity.this, InstagramArtSource.class);
+          updateIntent.setAction(ProtocolConstants.ACTION_HANDLE_COMMAND);
+          updateIntent.putExtra(ProtocolConstants.EXTRA_COMMAND_ID, MuzeiArtSource.BUILTIN_COMMAND_ID_NEXT_ARTWORK);
+          startService(updateIntent);
         }
       });
 
