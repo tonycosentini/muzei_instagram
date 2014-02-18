@@ -7,9 +7,13 @@ import java.util.List;
  * Created by tonyc on 2/12/14.
  */
 public class InstagramFeed {
+  public static final String TYPE_IMAGE = "image";
+  public static final String TYPE_VIDEO = "video";
+
   public @SerializedName("data") List<Item> items;
 
   public static class Item {
+    public @SerializedName("type") String type;
     public @SerializedName("images") Images images;
     public @SerializedName("caption") Caption caption;
     public @SerializedName("user") User user;

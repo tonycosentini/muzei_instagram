@@ -5,4 +5,7 @@
   <string name="authorize_account">Authorize Account</string>
   <string name="unable_to_authorize_account">Unable to authorize account.</string>
   <string name="remove_account">Remove Account</string>
+  <string name="my_photos">My Photos</string>
+  <string name="my_feed">My Feed</string>
+  <string name="photos_to_use">Photos to display</string>
 </resources>

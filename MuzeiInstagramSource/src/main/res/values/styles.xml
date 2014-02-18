@@ -4,6 +4,24 @@
     <item name="android:windowBackground">@color/gallery_settings_window_background</item>
     <item name="android:actionBarStyle">@style/Settings.ActionBar</item>
     <item name="android:windowActionBarOverlay">true</item>
+    <item name="android:radioButtonStyle">@style/Theme.Muzei.Settings.RadioButton</item>
+    <item name="android:listChoiceIndicatorSingle">@drawable/muzei_btn_radio_holo_dark</item>
+  </style>
+
+  <style name="Theme.Muzei.Settings.RadioButton" parent="android:Widget.Holo.CompoundButton.RadioButton">
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textSize">24sp</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="Theme.Muzei.Header">
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textStyle">italic</item>
+    <item name="android:textSize">24sp</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:background">@drawable/textview_border</item>
+    <item name="android:layout_marginBottom">8dp</item>
   </style>
 
   <style name="Settings.ActionBar" parent="android:Widget.Holo.ActionBar">
