@@ -38,6 +38,8 @@ public class InstagramArtSource extends RemoteMuzeiArtSource {
 
   @Override protected void onTryUpdate(int i) throws RetryException {
     if (preferencesHolder.isAccountAuthorized()) {
+      scheduleNext();
+
       if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_MY_PHOTOS) {
         instagramService.getUserMedia(preferencesHolder.getAccountTokenKey(), updateCallback);
       } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_MY_FEED) {
@@ -81,6 +83,13 @@ public class InstagramArtSource extends RemoteMuzeiArtSource {
       builder.byline(item.user.username);
 
       publishArtwork(builder.build());
+    }
+  }
+
+  private void scheduleNext() {
+    int rotateIntervalMinutes = preferencesHolder.getRotationSetting();
+    if (rotateIntervalMinutes > 0) {
+      scheduleUpdate(System.currentTimeMillis() + rotateIntervalMinutes * 60 * 1000);
     }
   }
 }

@@ -26,7 +26,6 @@ import javax.inject.Inject;
  */
 public class SettingsActivity extends Activity {
   @Inject PreferencesHolder preferencesHolder;
-  @Inject InstagramService instagramService;
 
   private static final String CLIENT_ID = "f3294c50f39b423d89370013ca38d99f";
   private static final String CALLBACK_SCHEME = "muzeiinstagram";
