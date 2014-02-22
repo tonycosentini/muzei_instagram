@@ -16,7 +16,6 @@ public class InstagramArtSourceApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
-    Crashlytics
     Crashlytics.start(this);
 
 
