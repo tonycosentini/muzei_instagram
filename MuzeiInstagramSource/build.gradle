@@ -1,7 +1,21 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    maven { url 'http://download.crashlytics.com/maven' }
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.8.+'
+    classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
+  }
+}
+
 apply plugin: 'android'
+apply plugin: 'crashlytics'
 
 repositories {
   mavenCentral()
+  maven { url 'http://download.crashlytics.com/maven' }
 }
 
 dependencies {
@@ -13,6 +27,7 @@ dependencies {
   compile 'com.jakewharton:butterknife:4.0.1'
   compile 'com.google.code.gson:gson:2.2.4'
   compile 'com.android.support:support-v4:18.0.+'
+  compile 'com.crashlytics.android:crashlytics:1.+'
 }
 
 android {

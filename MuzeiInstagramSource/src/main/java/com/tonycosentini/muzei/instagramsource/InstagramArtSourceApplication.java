@@ -1,6 +1,7 @@
 package com.tonycosentini.muzei.instagramsource;
 
 import android.app.Application;
+import com.crashlytics.android.Crashlytics;
 import com.tonycosentini.muzei.instagramsource.modules.AndroidModule;
 import com.tonycosentini.muzei.instagramsource.modules.InstagramArtSourceModule;
 import dagger.ObjectGraph;
@@ -15,6 +16,9 @@ public class InstagramArtSourceApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
+    Crashlytics
+    Crashlytics.start(this);
+
 
     graph = ObjectGraph.create(getModules().toArray());
   }
