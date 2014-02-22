@@ -37,6 +37,18 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/my_feed"/>
+      
+      <RadioButton
+          android:id="@+id/liked_photos_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/liked_photos"/>
+
+      <RadioButton
+          android:id="@+id/popular_photos_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/popular_photos"/>
 
     </RadioGroup>
 

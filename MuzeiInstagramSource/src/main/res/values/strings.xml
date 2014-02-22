@@ -9,4 +9,6 @@
   <string name="my_feed">My Feed</string>
   <string name="photos_to_use">Photos to display</string>
   <string name="action_rotate_interval">Change interval</string>
+  <string name="liked_photos">Liked Photos</string>
+  <string name="popular_photos">Popular Photos</string>
 </resources>

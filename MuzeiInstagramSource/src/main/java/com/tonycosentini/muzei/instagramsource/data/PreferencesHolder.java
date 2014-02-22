@@ -3,6 +3,9 @@ package com.tonycosentini.muzei.instagramsource.data;
 import android.content.SharedPreferences;
 import android.util.SparseIntArray;
 import com.tonycosentini.muzei.instagramsource.R;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -17,6 +20,15 @@ public class PreferencesHolder {
 
   public static final int PHOTOS_TO_DISPLAY_MY_PHOTOS = 1;
   public static final int PHOTOS_TO_DISPLAY_MY_FEED = 2;
+  public static final int PHOTOS_TO_DISPLAY_LIKED = 3;
+  public static final int PHOTOS_TO_DISPLAY_POPULAR = 4;
+
+  private static final List<Integer> photosToDisplayOptions = new ArrayList<Integer>(Arrays.asList(
+    PHOTOS_TO_DISPLAY_MY_PHOTOS,
+    PHOTOS_TO_DISPLAY_MY_FEED,
+    PHOTOS_TO_DISPLAY_LIKED,
+    PHOTOS_TO_DISPLAY_POPULAR
+  ));
 
   private static final int DEFAULT_ROTATE_INTERVAL_MIN = 60 * 6;
 
@@ -39,7 +51,7 @@ public class PreferencesHolder {
   }
 
   public void setPhotosToDisplaySetting(int photosToDisplaySetting) {
-    if (photosToDisplaySetting != PHOTOS_TO_DISPLAY_MY_FEED && photosToDisplaySetting != PHOTOS_TO_DISPLAY_MY_PHOTOS) {
+    if (!photosToDisplayOptions.contains(photosToDisplaySetting)) {
       throw new RuntimeException("Attempted to set photos to display setting to invalid value.");
     }
 

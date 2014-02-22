@@ -10,4 +10,6 @@ import retrofit.http.Query;
 public interface InstagramService {
   @GET("/users/self/media/recent") void getUserMedia(@Query("access_token") String accessToken, Callback<InstagramFeed> callback);
   @GET("/users/self/feed") void getUserFeed(@Query("access_token") String accessToken, Callback<InstagramFeed> callback);
+  @GET("/media/popular") void getPopularItems(@Query("access_token") String accessToken, Callback<InstagramFeed> callback);
+  @GET("/users/self/media/liked") void getLikedItems(@Query("access_token") String accessToken, Callback<InstagramFeed> callback);
 }

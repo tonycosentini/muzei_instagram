@@ -44,6 +44,10 @@ public class InstagramArtSource extends RemoteMuzeiArtSource {
         instagramService.getUserMedia(preferencesHolder.getAccountTokenKey(), updateCallback);
       } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_MY_FEED) {
         instagramService.getUserFeed(preferencesHolder.getAccountTokenKey(), updateCallback);
+      } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_LIKED) {
+        instagramService.getLikedItems(preferencesHolder.getAccountTokenKey(), updateCallback);
+      } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_POPULAR) {
+        instagramService.getPopularItems(preferencesHolder.getAccountTokenKey(), updateCallback);
       }
     }
   }

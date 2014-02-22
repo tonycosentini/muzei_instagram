@@ -77,6 +77,10 @@ public class SettingsActivity extends Activity {
             preferencesHolder.setPhotosToDisplaySetting(PreferencesHolder.PHOTOS_TO_DISPLAY_MY_PHOTOS);
           } else if (checkedId == R.id.my_feed_radio_button) {
             preferencesHolder.setPhotosToDisplaySetting(PreferencesHolder.PHOTOS_TO_DISPLAY_MY_FEED);
+          } else if (checkedId == R.id.liked_photos_button) {
+            preferencesHolder.setPhotosToDisplaySetting(PreferencesHolder.PHOTOS_TO_DISPLAY_LIKED);
+          } else if (checkedId == R.id.popular_photos_button) {
+            preferencesHolder.setPhotosToDisplaySetting(PreferencesHolder.PHOTOS_TO_DISPLAY_POPULAR);
           }
 
           Intent updateIntent = new Intent(SettingsActivity.this, InstagramArtSource.class);
@@ -90,6 +94,10 @@ public class SettingsActivity extends Activity {
         photosToDisplayRadioGroup.check(R.id.my_photos_radio_button);
       } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_MY_FEED) {
         photosToDisplayRadioGroup.check(R.id.my_feed_radio_button);
+      } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_LIKED) {
+        photosToDisplayRadioGroup.check(R.id.liked_photos_button);
+      } else if (preferencesHolder.getPhotosToDisplaySetting() == PreferencesHolder.PHOTOS_TO_DISPLAY_POPULAR) {
+        photosToDisplayRadioGroup.check(R.id.popular_photos_button);
       } else {
         preferencesHolder.setPhotosToDisplaySetting(PreferencesHolder.PHOTOS_TO_DISPLAY_MY_PHOTOS);
         throw new RuntimeException("Photos to display setting set to invalid value. Resetting and crashing.");
