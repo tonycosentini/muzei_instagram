@@ -5,8 +5,4 @@ muzei_instagram
 
 A work in progress art source to view your Instagram photos in Muzei.
 
-Todo:
-* Add your feed as an option.
-* Auto-advance wallpaper?
-
 ![Screenshot](http://i.imgur.com/AxMVpBr.png)
